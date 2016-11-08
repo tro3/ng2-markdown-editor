@@ -8,10 +8,18 @@
 
   <div class="row">
     <div class="col-md-6">
-      <textarea [(ngModel)] = "buff" class="form-control"></textarea>
+      <textarea [(ngModel)]="buff" class="form-control"></textarea>
     </div>
     <div class="col-md-6">
       <markdown-viewer [model]="buff"></markdown-viewer>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <markdown-editor [(model)]="buff"></markdown-editor>
+    </div>
+    <div class="col-md-6">
     </div>
   </div>
 

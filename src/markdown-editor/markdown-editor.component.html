@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <div class="pull-left" ng-show="!preview">
+      <button class="btn btn-default btn-xs fa fa-bold"          (click)="onEditor('bold')"          tooltip="Bold"></button>
+      <button class="btn btn-default btn-xs fa fa-italic"        (click)="onEditor('italic')"        tooltip="Italic"></button>
+      <button class="btn btn-default btn-xs fa fa-underline"     (click)="onEditor('underline')"     tooltip="Underline"></button>
+      <button class="btn btn-default btn-xs fa fa-minus"         (click)="onEditor('hr')"            tooltip="Horizontal Line"></button>
+      <button class="btn btn-default btn-xs fa fa-list-ul"       (click)="onEditor('list')"          tooltip="Bullet List"></button>
+      <button class="btn btn-default btn-xs fa fa-list-ol"       (click)="onEditor('list-2')"        tooltip="Numbered List"></button>
+      <button class="btn btn-default btn-xs fa fa-table"         (click)="onEditor('table')"         tooltip="Table"></button>
+      <button class="btn btn-default btn-xs fa fa-header"        (click)="onEditor('header')"        tooltip="Header"></button>
+      <button class="btn btn-default btn-xs fa fa-link"          (click)="onEditor('url')"           tooltip="Link"></button>
+      <button class="btn btn-default btn-xs fa fa-image"         (click)="onEditor('img')"           tooltip="Image"></button>
+      <button class="btn btn-default btn-xs fa fa-code"          (click)="onEditor('code')"          tooltip="Code"></button>
+      <button class="btn btn-default btn-xs fa fa-file-code-o"   (click)="onEditor('codeblock')"     tooltip="Code Block"></button>
+      <button class="btn btn-default btn-xs fa fa-quote-left"    (click)="onEditor('quote')"         tooltip="Quote"></button>
+      <button class="btn btn-default btn-xs fa fa-strikethrough" (click)="onEditor('strikethrough')" tooltip="Strikethrough"></button>
+    </div>
+    <div class="pull-right">
+      <button class="btn btn-default btn-xs fa fa-eye" (click)="onPreview()" ng-class="{active: preview}" tooltip="Preview"></button>
+      <a class="btn btn-default btn-xs fa fa-question" href="https://help.github.com/articles/basic-writing-and-formatting-syntax/" target="_blank" tooltip="Help"></a>
+    </div>
+  </div>
+  <div class="panel-body" style="padding: 2px;" *ngIf="!preview">
+    <textarea #editArea class="form-control" rows="20" [ngModel]="model" (ngModelChange)="modelChange.emit($event)"></textarea>
+  </div>
+  <div class="panel-body" *ngIf="preview">
+    <markdown-viewer [model]="model"></markdown-viewer>
+  </div>
+</div>
